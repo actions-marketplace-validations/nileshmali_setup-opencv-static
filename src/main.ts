@@ -1,9 +1,9 @@
 import * as core from '@actions/core'
-import {downloadOpenCV} from './downloader'
-import {installDeps} from './installer'
-import {buildAndInstallOpenCV} from './builder'
+import {downloadOpenCV} from './downloader.js'
+import {installDeps} from './installer.js'
+import {buildAndInstallOpenCV} from './builder.js'
 
-async function run(): Promise<void> {
+export async function run(): Promise<void> {
   try {
     await installDeps()
     const paths = await downloadOpenCV()
@@ -13,5 +13,3 @@ async function run(): Promise<void> {
     if (error instanceof Error) core.setFailed(error.message)
   }
 }
-
-run()
